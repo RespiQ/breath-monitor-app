@@ -6,6 +6,8 @@ import {
   StyleSheet,
   ScrollView,
   SafeAreaView,
+  StatusBar,
+  Platform,
 } from 'react-native';
 import { 
   Activity, 
@@ -21,22 +23,49 @@ import {
 } from 'lucide-react-native';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function HomePage() {
+  const insets = useSafeAreaInsets();
   const handleStartMonitoring = () => {
     router.push('/breath_test_guide');
   };
 
   const handleViewHistory = () => {
-    router.push('/history');
+    router.push('/trends');
   };
 
   const handleContactNurse = () => {
-    router.push('/contact-nurse');
+    router.push('/contact');
+  };
+
+  const handleProfilePress = () => {
+    // Navigate to profile screen when implemented
+    console.log('Profile pressed');
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <StatusBar barStyle="dark-content" backgroundColor="white" />
+      
+      {/* Header */}
+      <View style={styles.header}>
+        <Image
+          source={require('../assets/images/respiq-logo.png')}
+          style={styles.logo}
+          contentFit="contain"
+        />
+        <TouchableOpacity 
+          style={styles.profileButton}
+          onPress={handleProfilePress}
+          activeOpacity={0.7}
+        >
+          <View style={styles.profilePlaceholder}>
+            <User size={24} color="#64748B" />
+          </View>
+        </TouchableOpacity>
+      </View>
+
       {/* Centered Top Section */}
       <View style={styles.topSection}>
         {/* Main Action Button - Big Round */}
@@ -46,7 +75,7 @@ export default function HomePage() {
           activeOpacity={0.8}
         >
           <View style={styles.playIconContainer}>
-            <Wind size={48} color="white" />
+            <Wind size={52} color="white" />
           </View>
           <Text style={styles.startButtonTitle}>Take Breath Test</Text>
         </TouchableOpacity>
@@ -115,7 +144,7 @@ export default function HomePage() {
           <Text style={styles.footerText}>Always consult your healthcare provider</Text>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -124,6 +153,36 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FAFBFB',
   },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 16,
+    backgroundColor: 'white',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F1F5F9',
+    position: 'relative',
+  },
+  logo: {
+    width: 200,
+    height: 52,
+    position: 'absolute',
+    left: -25,
+  },
+  profileButton: {
+    padding: 4,
+    marginLeft: 'auto',
+  },
+  profilePlaceholder: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#F1F5F9',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
   topSection: {
     flex: 1,
     justifyContent: 'center',
@@ -131,28 +190,35 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   startButton: {
-    backgroundColor: '#4F46E5',
-    width: 180,
-    height: 180,
-    borderRadius: 90,
+    backgroundColor: '#3B82F6',
+    width: 200,
+    height: 200,
+    borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#4F46E5',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.25,
-    shadowRadius: 16,
-    elevation: 8,
-    marginBottom: 20,
+    shadowColor: '#3B82F6',
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.4,
+    shadowRadius: 28,
+    elevation: 15,
+    marginBottom: 24,
+    borderWidth: 4,
+    borderColor: 'rgba(59, 130, 246, 0.2)',
+    // Gradient-like effect with multiple shadows
+    shadowColor: '#3B82F6',
   },
   playIconContainer: {
-    marginBottom: 8,
+    marginBottom: 12,
   },
   startButtonTitle: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: '600',
     color: 'white',
     textAlign: 'center',
-    letterSpacing: 0.3,
+    letterSpacing: 0.5,
+    textShadowColor: 'rgba(0, 0, 0, 0.1)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
   },
   statsText: {
     fontSize: 15,

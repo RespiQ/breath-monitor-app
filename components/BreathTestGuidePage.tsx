@@ -6,6 +6,8 @@ import {
   StyleSheet,
   ScrollView,
   SafeAreaView,
+  StatusBar,
+  Platform
 } from 'react-native';
 import { 
   ArrowLeft,
@@ -16,8 +18,21 @@ import {
   AlertCircle
 } from 'lucide-react-native';
 import { router } from 'expo-router';
+import { User } from 'lucide-react-native';
+import { Image } from 'expo-image';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+
 
 export default function BreathTestGuide() {
+  const insets = useSafeAreaInsets();
+
+  const handleProfilePress = () => {
+    // Navigate to profile screen when implemented
+    console.log('Profile pressed');
+  };
+
+
   const handleBack = () => {
     router.back();
   };
@@ -52,7 +67,27 @@ export default function BreathTestGuide() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <StatusBar barStyle="dark-content" backgroundColor="white" />
+      
+      {/* Header */}
+      <View style={styles.header}>
+        <Image
+          source={require('../assets/images/respiq-logo.png')}
+          style={styles.logo}
+          contentFit="contain"
+        />
+        <TouchableOpacity 
+          style={styles.profileButton}
+          onPress={handleProfilePress}
+          activeOpacity={0.7}
+        >
+          <View style={styles.profilePlaceholder}>
+            <User size={24} color="#64748B" />
+          </View>
+        </TouchableOpacity>
+      </View>
+
       {/* Invisible tap zone - top left corner */}
       <TouchableOpacity 
         style={styles.invisibleTapZone}
@@ -90,9 +125,8 @@ export default function BreathTestGuide() {
           ))}
         </View>
 
-
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -100,6 +134,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FAFBFB',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 16,
+    backgroundColor: 'white',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F1F5F9',
+    position: 'relative',
+  },
+  logo: {
+    width: 200,
+    height: 52,
+    position: 'absolute',
+    left: -25,
+  },
+  profileButton: {
+    padding: 4,
+    marginLeft: 'auto',
+  },
+  profilePlaceholder: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#F1F5F9',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
   },
   invisibleTapZone: {
     position: 'absolute',
