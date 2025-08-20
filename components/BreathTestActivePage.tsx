@@ -107,12 +107,6 @@ export default function BreathTestActiveScreen() {
       totalTime += phase.duration;
     });
 
-    // Auto-navigate after all phases (can be overridden by tap)
-    setTimeout(() => {
-      // Default to success if no manual override
-      router.push('/breath_test_success');
-    }, totalTime);
-
   }, []);
 
   return (
