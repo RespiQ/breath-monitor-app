@@ -22,11 +22,11 @@ export default function BreathTestActiveScreen() {
 
   // Hidden tap zones for demo control
   const handleTopLeftTap = () => {
-    router.push('/breath-success');
+    router.push('/breath_test_success');
   };
 
   const handleTopRightTap = () => {
-    router.push('/breath-failure');
+    router.push('/breath_test_failure');
   };
 
   const phases = [
@@ -110,7 +110,7 @@ export default function BreathTestActiveScreen() {
     // Auto-navigate after all phases (can be overridden by tap)
     setTimeout(() => {
       // Default to success if no manual override
-      router.push('/breath-success');
+      router.push('/breath_test_success');
     }, totalTime);
 
   }, []);
