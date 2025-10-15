@@ -1,28 +1,20 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  SafeAreaView,
-  StatusBar,
-  Platform,
-} from 'react-native';
-import { 
-  Activity, 
-  Play, 
-  Clock, 
-  Settings, 
-  User,
-  Heart,
-  TrendingUp,
-  Calendar,
-  Wind,
-  Phone
-} from 'lucide-react-native';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
+import {
+  Calendar,
+  Phone,
+  User,
+  Wind
+} from 'lucide-react-native';
+import React from 'react';
+import {
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function HomePage() {
@@ -190,7 +182,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   startButton: {
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#197FC0',
     width: 200,
     height: 200,
     borderRadius: 100,

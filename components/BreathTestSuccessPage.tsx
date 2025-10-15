@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  SafeAreaView,
-  Animated,
-  StatusBar,
-  Platform,
-} from 'react-native';
-import { 
-  TrendingUp,
-  Calendar,
-  Home,
-  Activity,
-  Heart,
-  Phone,
-  User
-} from 'lucide-react-native';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
+import {
+  Calendar,
+  Home,
+  Phone,
+  TrendingUp,
+  User
+} from 'lucide-react-native';
+import React, { useEffect, useState } from 'react';
+import {
+  Animated,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function BreathSuccessScreen() {
@@ -340,12 +336,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   primaryButton: {
-    backgroundColor: '#4F46E5',
+    backgroundColor: '#197FC0',
     borderRadius: 12,
     paddingVertical: 16,
     alignItems: 'center',
     marginBottom: 16,
-    shadowColor: '#4F46E5',
+    shadowColor: '#197FC0',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 8,

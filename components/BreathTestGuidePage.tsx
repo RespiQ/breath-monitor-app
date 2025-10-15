@@ -1,25 +1,20 @@
+import { Image } from 'expo-image';
+import { router } from 'expo-router';
+import {
+  Clock,
+  Power,
+  User,
+  Wind
+} from 'lucide-react-native';
 import React from 'react';
 import {
-  View,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
   Text,
   TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  SafeAreaView,
-  StatusBar,
-  Platform
+  View
 } from 'react-native';
-import { 
-  ArrowLeft,
-  Power,
-  Wind,
-  Clock,
-  CheckCircle,
-  AlertCircle
-} from 'lucide-react-native';
-import { router } from 'expo-router';
-import { User } from 'lucide-react-native';
-import { Image } from 'expo-image';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
@@ -226,7 +221,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#4F46E5',
+    backgroundColor: '#197FC0',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 16,
